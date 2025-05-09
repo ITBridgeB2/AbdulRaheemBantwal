@@ -1,0 +1,119 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+  }
+  
+  .todo-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: hidden;
+  }
+  
+  .parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    background: linear-gradient(to right, #667eea, #764ba2);
+    background-attachment: fixed;
+    z-index: -1;
+    animation: parallaxMove 30s linear infinite;
+    filter: brightness(0.85);
+  }
+  
+  @keyframes parallaxMove {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-10%);
+    }
+  }
+  
+  .todo-card {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    animation: fadeInUp 1s ease;
+  }
+  
+  .todo-heading {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    animation: pulseText 2s infinite;
+  }
+  
+  .todo-input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .todo-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  }
+  
+  .todo-button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .todo-button.submit {
+    background-color: #28a745;
+  }
+  
+  .todo-button.view {
+    background-color: #007bff;
+  }
+  
+  .todo-button:hover {
+    transform: scale(1.05);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes pulseText {
+    0%, 100% { color: #333; }
+    50% { color: #007bff; }
+  }
+  
+
+
+  

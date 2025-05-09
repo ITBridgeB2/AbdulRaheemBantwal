@@ -1,0 +1,29 @@
+.user-posts .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .post-wrapper {
+    position: relative;
+  }
+  
+  .post-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .btn.danger {
+    color: var(--danger);
+    border-color: var(--danger);
+  }
+  
+  .btn.danger:hover {
+    background: rgba(247, 37, 133, 0.1);
+  }

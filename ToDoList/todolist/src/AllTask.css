@@ -1,0 +1,223 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f0f0f0;
+    overflow-x: hidden;
+}
+
+.task-container {
+    position: relative;
+    z-index: 1;
+    padding: 2rem;
+}
+
+.parallax-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+    background-attachment: fixed;
+    z-index: -1;
+    animation: parallaxMove 30s linear infinite;
+}
+
+@keyframes parallaxMove {
+    0% {
+        transform: translateY(0%);
+    }
+    100% {
+        transform: translateY(-10%);
+    }
+}
+
+.title {
+    font-size: 2.5rem;
+    color: #222;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    text-shadow: 1px 1px 2px #ccc;
+}
+
+.task-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.task-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.8s ease-in;
+    transition: background-color 0.4s ease;
+}
+
+.task-card.highlighted {
+    background-color: #fff8c4;
+}
+
+.task-content {
+    margin-bottom: 0.5rem;
+}
+
+.task-buttons button {
+    margin-right: 0.5rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.task-buttons button:hover {
+    background-color: #0056b3;
+}
+
+.task-status {
+    font-size: 0.9rem;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+.edit-form {
+    position: fixed;
+    top: 20%;
+    right: 5%;
+    background: #ffffff;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    z-index: 10;
+    width: 300px;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.edit-form input {
+    width: 100%;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.edit-form button {
+    margin-right: 0.5rem;
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-form button:hover {
+    background-color: #1e7e34;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.go-to-todolist-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.go-to-todolist-btn:hover {
+    background-color: #45a049;
+}
+
+/* 
+
+
+.go-to-page-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.go-to-page-btn:hover {
+    background-color: #0056b3;
+}
+ */
+
+
+
+
+
+ /* AllTask.css */
+
+/* Make the 'ADD TASK' button sticky within the task-list */
+.task-list {
+    position: relative; /* Create a reference for the sticky positioning */
+}
+
+
+.go-to-page-btn {
+    position: fixed;         /* Fixed position keeps it on the screen while scrolling */
+    top: 1px;               /* Distance from the top of the screen */
+    right: 20px;             /* Distance from the right edge */
+     z-index: 1000;
+
+     /*  //nsure it's above other elements */
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.go-to-page-btn:hover {
+    background-color: #45a049;
+}
+
+
+
+
+.task-content {
+     word-wrap: break-word;             /*                Break long words */
+    } 
+    
+    
+
+
+
+  .filter-section {
+    position: fixed;         /* Fixed position keeps it on the screen while scrolling */
+    background-color: #90a0b0;
+    top: 20px;
+    text-align: center;
+}
+
+.filter-section select {
+    margin-left: 10px;
+    padding: 5px;
+}
+
