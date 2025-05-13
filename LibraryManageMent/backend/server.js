@@ -7,27 +7,40 @@ app.use(cors());
 app.use(express.json());
 
 // Create Book
+// app.post('/books', (req, res) => {
+//   const { title, author, genre, publication_year } = req.body;
+//   if (!title || !author) return res.status(400).json({ error: 'Title and author are required' });
+
+//   db.query('INSERT INTO books (title, author, genre, publication_year) VALUES (?, ?, ?, ?)', 
+//     [title, author, genre, publication_year], 
+//     (err, result) => {
+//       if (err) return res.status(500).json({ error: 'DB error' });
+//       res.status(201).json({ id: result.insertId, title, author, genre, publication_year });
+//     });
+// });
+
+
+
+// Create Book
 app.post('/books', (req, res) => {
   const { title, author, genre, publication_year } = req.body;
   if (!title || !author) return res.status(400).json({ error: 'Title and author are required' });
 
+  // Normalize genre to title case
+  const normalizedGenre = genre.split(' ').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+  ).join(' ');
+
   db.query('INSERT INTO books (title, author, genre, publication_year) VALUES (?, ?, ?, ?)', 
-    [title, author, genre, publication_year], 
+    [title, author, normalizedGenre, publication_year], 
     (err, result) => {
       if (err) return res.status(500).json({ error: 'DB error' });
-      res.status(201).json({ id: result.insertId, title, author, genre, publication_year });
+      res.status(201).json({ id: result.insertId, title, author, genre: normalizedGenre, publication_year });
     });
 });
 
 
-// app.post('/add-book', (req, res) => {
-//   const { title, author, genre, description } = req.body;
-//   const sql = 'INSERT INTO books (title, author, genre, description) VALUES (?, ?, ?, ?)';
-//   db.query(sql, [title, author, genre, description], (err, result) => {
-//     if (err) return res.status(500).json({ error: err.message });
-//     res.json({ success: true, id: result.insertId });
-//   });
-// });
+
 
 
 // Get all books
@@ -39,16 +52,39 @@ app.get('/books', (req, res) => {
 });
 
 // Get all categories (genres)
+// app.get('/categories', (req, res) => {
+//   db.query('SELECT DISTINCT genre FROM books', (err, result) => {
+//     if (err) {
+//       console.error(err);  // Log the error in case there is a DB issue
+//       return res.status(500).json({ error: 'DB error' });
+//     }
+//     console.log(result);  // Log the result to ensure categories are fetched
+//     res.json(result);
+//   });
+// });
+
+
+// Get all categories (genres)
 app.get('/categories', (req, res) => {
   db.query('SELECT DISTINCT genre FROM books', (err, result) => {
     if (err) {
       console.error(err);  // Log the error in case there is a DB issue
       return res.status(500).json({ error: 'DB error' });
     }
-    console.log(result);  // Log the result to ensure categories are fetched
-    res.json(result);
+    
+    // Normalize genres from database
+    const normalizedGenres = result.map(cat => ({
+      genre: cat.genre.split(' ').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+      ).join(' ')
+    }));
+
+    console.log(normalizedGenres);  // Log the result to ensure categories are fetched and normalized
+    res.json(normalizedGenres);
   });
 });
+
+
 
 // Get books by genre
 app.get('/books/category/:genre', (req, res) => {
