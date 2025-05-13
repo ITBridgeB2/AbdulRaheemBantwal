@@ -1,90 +1,184 @@
+/* Container Styling */
 .category-book-list-container {
-  padding: 20px;
+  padding: 40px 20px;
   font-family: 'Poppins', sans-serif;
-}
-
-h2 {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
+  background-color: #f4f7fa;
   text-align: center;
 }
 
+h2 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+/* Search Bar */
+.search-bar-container {
+  margin-bottom: 30px;
+}
+
+input[type="text"] {
+  padding: 12px 20px;
+  width: 350px;
+  border-radius: 25px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+/* Add Book Button */
 .add-book-button {
   background-color: #6a11cb;
   background: linear-gradient(to right, #2575fc, #6a11cb);
   color: white;
   border: none;
-  padding: 10px 20px;
+  padding: 12px 24px;
   border-radius: 30px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
-  margin-bottom: 20px;
+  margin: 20px auto;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
 }
 
 .add-book-button:hover {
   transform: scale(1.05);
 }
 
-.book-list {
-  list-style-type: none;
-  padding: 0;
+.add-book-button:active {
+  transform: scale(1);
 }
 
-.book-item {
-  background-color: #f9f9f9;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* Book Cards Grid */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+
+/* Book Card */
+.book-card {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  border: 2px solid #e0e0e0; /* Adds a soft border for separation */
 }
 
-.book-actions {
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Different Backgrounds for Individual Books */
+.book-card:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.book-card:nth-child(even) {
+  background-color: #e9eff1;
+}
+
+.book-card-header {
+  margin-bottom: 15px;
+}
+
+.book-title {
+  font-size: 1.6rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.book-author {
+  font-size: 1.1rem;
+  color: #777;
+}
+
+.book-card-body {
+  margin-bottom: 20px;
+}
+
+.book-genre, .book-publication {
+  font-size: 1rem;
+  color: #666;
+}
+
+.book-card-footer {
   display: flex;
   gap: 10px;
+  justify-content: space-between;
 }
 
+/* Action Links & Buttons */
 .view-link, .edit-link, .delete-button {
   text-decoration: none;
   font-size: 1rem;
-  padding: 5px 10px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: inline-block;
 }
 
 .view-link {
   background-color: #4CAF50;
   color: white;
-  padding: 8px;
-  border-radius: 5px;
+}
+
+.view-link:hover {
+  background-color: #45a049;
 }
 
 .edit-link {
   background-color: #FFA500;
   color: white;
-  padding: 8px;
-  border-radius: 5px;
+}
+
+.edit-link:hover {
+  background-color: #e6891e;
 }
 
 .delete-button {
   background-color: #FF5733;
   color: white;
-  padding: 8px;
-  border-radius: 5px;
+  padding: 8px 16px;
+  border-radius: 8px;
   border: none;
   cursor: pointer;
 }
 
-.view-link:hover, .edit-link:hover, .delete-button:hover {
-  opacity: 0.8;
+.delete-button:hover {
+  background-color: #e84c30;
 }
 
 .delete-button:active {
-  transform: scale(0.95);
+  transform: scale(0.98);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-bar-container {
+    margin-bottom: 20px;
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  input[type="text"] {
+    width: 280px;
+  }
 }
