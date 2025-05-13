@@ -17,8 +17,8 @@ app.use(express.json());
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'root',  // Replace with your database password
-  database: 'weather_db',  // Ensure this database exists
+  password: 'root',  
+  database: 'weather_db', 
 });
 
 // OpenWeatherMap API key and URL
